@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,11 +18,20 @@
         <activity
             android:name=".ProposeActivity"
             android:label="@string/title_activity_propose"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.tartanhacks.meetup.MainActivity" />
+                android:value=".HomeActivity" />
+        </activity>
+        <activity
+            android:name=".FacebookActivity"
+            android:label="@string/title_activity_facebook"
+            android:parentActivityName=".HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.tartanhacks.meetup.HomeActivity" />
         </activity>
     </application>
 

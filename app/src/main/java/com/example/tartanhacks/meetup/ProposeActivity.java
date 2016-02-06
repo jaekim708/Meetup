@@ -11,6 +11,7 @@ import android.content.Intent;
 public class ProposeActivity extends AppCompatActivity {
 
     Intent intent = getIntent();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
