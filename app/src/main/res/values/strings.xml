@@ -29,5 +29,6 @@
     <string name="outdoor">Outdoor</string>
     <string name="shopping">Shopping</string>
     <string name="sports">Sports</string>
+    <string name="noCards">You have no more nearby activities! Please try again later, or post your own!</string>
 
 </resources>
