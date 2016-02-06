@@ -24,6 +24,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.tartanhacks.meetup.MainActivity" />
         </activity>
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 </manifest>
