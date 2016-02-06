@@ -1,10 +1,9 @@
 package com.example.tartanhacks.meetup;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.content.Intent;
 import android.widget.ArrayAdapter;
@@ -13,6 +12,8 @@ import android.widget.Spinner;
 import android.widget.Adapter;
 
 import com.parse.ParseObject;
+
+import org.w3c.dom.Text;
 
 public class ProposeActivity extends AppCompatActivity {
 
@@ -43,6 +44,23 @@ public class ProposeActivity extends AppCompatActivity {
         String activityName = grabName.getText().toString();
 
         EditText grabNum = (EditText) findViewById(R.id.number_people);
+        //int numPeople = Integer.parseInt(grabNum.getText().toString());
+        String numPeopleStr = grabNum.getText().toString();
+
+        if(TextUtils.isEmpty(activityName) && TextUtils.isEmpty(numPeopleStr)) {
+            grabName.setError("Please enter an activity name.");
+            grabNum.setError("Please specify the number of people.");
+            return;
+        }
+        if(TextUtils.isEmpty(activityName)) {
+            grabName.setError("Please enter an activity name.");
+            return;
+        }
+        if(TextUtils.isEmpty(numPeopleStr)) {
+            grabNum.setError("Please specify the number of people.");
+            return;
+        }
+
         int numPeople = Integer.parseInt(grabNum.getText().toString());
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner1);

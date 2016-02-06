@@ -7,19 +7,53 @@
     android:fitsSystemWindows="true"
     tools:context=".LoginActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="180dp"
+        android:text="Welcome to Meetup."
+        android:background="#d5ddef"
+        android:textSize="20sp"
+        android:gravity="center"/>
+
+    <TextView   android:id="@+id/loginText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="331dp"
+        android:layout_marginLeft="35dp"
+        android:text="Log in with Facebook"
+        android:textSize="20sp"
+        android:gravity="center"/>
+
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Go"
+        android:layout_marginTop="230dp"
+        android:text="Let's hang out"
         android:onClick="go" />
 
-    <Button
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:layout_marginTop="300dp"
+        android:background="#d5ddef"/>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:layout_marginTop="390dp"
+        android:background="#d5ddef"/>
+
+    <Button android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="320dp"
-        android:layout_marginLeft="200dp"
+        android:layout_marginLeft="250dp"
         android:text="Login"
-        android:onClick="login" />
+        android:background="@drawable/com_facebook_button_background"
+        android:textColor="#FFFFFF"
+        android:onClick="login"
+        android:gravity="center"/>
 
     <include layout="@layout/content_facebook" />
 
