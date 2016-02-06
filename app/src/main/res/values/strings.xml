@@ -8,5 +8,14 @@
     <string name="parse_app_id">3wRj6NESp19ulPCGv2G6DrklkDZ27kGrJrcIRfXb</string>
     <string name="parse_client_key">iLBZqJSSJcz75PCnGfuYJuxEIhum3gqfLPZCFwvS</string>
     <string name="title_activity_facebook">Facebook Activity</string>
+    <string-array name="categories_array">
+        <item>Outdoor</item>
+        <item>Movies</item>
+        <item>Shopping</item>
+        <item>Sports</item>
+        <item>Music</item>
+        <item>Dining</item>
+        <item>Clubbing</item>
+    </string-array>
     <string name="title_activity_swipe">Swipe Activity</string>
 </resources>
