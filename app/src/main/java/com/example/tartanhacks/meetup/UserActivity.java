@@ -16,20 +16,12 @@ public class UserActivity extends ParseObject {
         put("name", value);
     }
 
-    public ParseRelation<ParseUser> getUsersLiked(){
-        return getRelation("usersLiked");
+    public ParseRelation<ParseUser> getUsersSeen(){
+        return getRelation("usersSeen");
     }
 
-    public void addUsersLiked(ParseUser user){
-        getUsersLiked().add(user);
-    }
-
-    public ParseRelation<ParseUser> getUsersDisliked(){
-        return getRelation("usersLiked");
-    }
-
-    public void addUsersDisliked(ParseUser user){
-        getUsersDisliked().add(user);
+    public void addUsersSeen(ParseUser user){
+        getUsersSeen().add(user);
     }
 
     public String getCategory() {
