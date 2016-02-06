@@ -18,16 +18,13 @@
         <item>@string/movies</item>
         <item>@string/shopping</item>
         <item>@string/sports</item>
-        <item>@string/music</item>
-        <item>@string/dining</item>
-        <item>@string/clubbing</item>
     </string-array>
     <string name="clubbing">Clubbing</string>
     <string name="dining">Dining</string>
-    <string name="movies">Movies</string>
+    <string name="movies">Hang  out</string>
     <string name="music">Music</string>
-    <string name="outdoor">Outdoor</string>
-    <string name="shopping">Shopping</string>
+    <string name="outdoor">Nature</string>
+    <string name="shopping">Cultural</string>
     <string name="sports">Sports</string>
     <string name="noCards">You have no more nearby activities! Please try again later, or post your own!</string>
 

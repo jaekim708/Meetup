@@ -61,9 +61,25 @@ public class SwipeActivity extends Activity {
                         if (!userSeen) {
                             a.addUsersSeen(ParseUser.getCurrentUser());
                             a.saveInBackground();
-                            currCards.push(a.getObjectId());
-                            CardModel card = new CardModel(a.getName(), "Description goes here",
+                            currCards.push(a.getObjectId()); // nature sports cultural hangout
+                            CardModel card;
+                            System.out.println(a.getCategory());
+                            card = new CardModel(a.getName(), "",
                                     ContextCompat.getDrawable(getApplicationContext(), R.drawable.picture1));
+                            if (a.getCategory().equals("Nature"))
+                                card = new CardModel(a.getName(), "",
+                                        ContextCompat.getDrawable(getApplicationContext(), R.drawable.nature));
+                            else if (a.getCategory().equals("Chill"))
+                                card = new CardModel(a.getName(), "",
+                                        ContextCompat.getDrawable(getApplicationContext(), R.drawable.coffee));
+                            else if (a.getCategory().equals("Cultural"))
+                                card = new CardModel(a.getName(), "",
+                                        ContextCompat.getDrawable(getApplicationContext(), R.drawable.cultural));
+                            else if (a.getCategory().equals("Sports"))
+                                card = new CardModel(a.getName(), "",
+                                        ContextCompat.getDrawable(getApplicationContext(), R.drawable.sport));
+                            //else if (a.getCategory() == "Culture")
+
                             card.setOnClickListener(new CardModel.OnClickListener() {
                                 @Override
                                 public void OnClickListener() {
