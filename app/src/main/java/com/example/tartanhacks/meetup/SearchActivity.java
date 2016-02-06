@@ -59,31 +59,6 @@ public class SearchActivity extends AppCompatActivity {
                 // If not checked?
                 */
                 break;
-            case R.id.checkbox_music:
-                /*
-                if (checked)
-
-                // Do what when checked?
-                else
-                // If not checked?
-                */
-                break;
-            case R.id.checkbox_dining:
-                /*
-                if (checked)
-                // Do what when checked?
-                else
-                // If not checked?
-                */
-                break;
-            case R.id.checkbox_clubbing:
-                /*
-                if (checked)
-                // Do what when checked?
-                else
-                // If not checked?
-                */
-                break;
         }
     }
     public void submitSearch(View v) {
