@@ -15,7 +15,7 @@ public class HomeActivity extends Activity {
 
     /* This will be called when the user clicks the "Propose" button. */
     public void proposeActivity(View view)  {
-        Intent intent = new Intent(this, ProposeActivity.class);
+        Intent intent = new Intent(this, SwipeActivity.class);
         startActivity(intent);
     }
     public void facebookActivity(View view)  {

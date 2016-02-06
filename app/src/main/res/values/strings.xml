@@ -17,4 +17,5 @@
         <item>Dining</item>
         <item>Clubbing</item>
     </string-array>
+    <string name="title_activity_swipe">Swipe Activity</string>
 </resources>
