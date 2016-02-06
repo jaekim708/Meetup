@@ -13,20 +13,20 @@
         android:background="@color/colorPrimary">
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="50dp"
-            android:paddingRight="50dp"
-            android:src="@mipmap/logo"
+            android:layout_centerInParent="true"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/logobig"
             />
 
         <ImageButton
-            android:layout_width="wrap_content"
+            android:id="@+id/login_button"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:src="@mipmap/fblogin"
+            android:layout_marginTop="400dp"
+            android:src="@drawable/fblogin"
+            android:background="#ffffff"
             android:onClick="login"
             />
     </RelativeLayout>
