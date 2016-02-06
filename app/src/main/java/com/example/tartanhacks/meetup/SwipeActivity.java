@@ -66,16 +66,16 @@ public class SwipeActivity extends Activity {
     }
 
     public void showCards() {
-            updateCards();
-            mCardCont.setAdapter(adapter);
-            if (currCards.size() == 0) {
-                findViewById(R.id.cardCont).setVisibility(View.GONE);
-                findViewById(R.id.noMoreCards).setVisibility(View.VISIBLE);
-            } else {
-
-                findViewById(R.id.cardCont).setVisibility(View.VISIBLE);
-                findViewById(R.id.noMoreCards).setVisibility(View.GONE);
-            }
+        updateCards();
+        //need refresh button
+        mCardCont.setAdapter(adapter);
+        if (currCards.size() == 0) {
+            findViewById(R.id.cardCont).setVisibility(View.GONE);
+            findViewById(R.id.noMoreCards).setVisibility(View.VISIBLE);
+        } else {
+            findViewById(R.id.cardCont).setVisibility(View.VISIBLE);
+            findViewById(R.id.noMoreCards).setVisibility(View.GONE);
+        }
 
     }
 
