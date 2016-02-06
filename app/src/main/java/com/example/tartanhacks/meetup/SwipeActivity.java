@@ -11,7 +11,7 @@ import com.parse.ParseQuery;
 import java.util.List;
 
 public class SwipeActivity extends Activity {
-    ParseQuery<ParseObject> activities_query = ParseQuery.getQuery("Activities");
+    ParseQuery activities_query = UserActivity.getQuery();
     ParseObject activities;
 
     @Override
@@ -22,7 +22,7 @@ public class SwipeActivity extends Activity {
         activities_query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, ParseException e) {
                 if (e == null) {
-                    activities = objects.get(0); // should only be one Activities object
+                    activities = objects.get(0); // should only be one UserActivity object
                 } else {
                     // shouldn't be here...
                 }

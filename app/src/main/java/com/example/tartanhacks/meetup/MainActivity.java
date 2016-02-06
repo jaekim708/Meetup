@@ -12,7 +12,7 @@ import java.util.List;
 
 
 public class MainActivity extends Activity {
-    ParseQuery<ParseObject> activities_query = ParseQuery.getQuery("Activities");
+    ParseQuery<ParseObject> activities_query = ParseQuery.getQuery("UserActivity");
     ParseObject activities;
 
     @Override
@@ -22,7 +22,7 @@ public class MainActivity extends Activity {
         activities_query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, ParseException e) {
                 if (e == null) {
-                    activities = objects.get(0); // should only be one Activities object
+                    activities = objects.get(0); // should only be one UserActivity object
                 } else {
                     // shouldn't be here...
                 }
