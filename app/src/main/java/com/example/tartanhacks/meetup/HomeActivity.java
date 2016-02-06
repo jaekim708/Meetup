@@ -6,11 +6,11 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
 
-public class MainActivity extends Activity {
+public class HomeActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
     }
 
     /* This will be called when the user clicks the "Propose" button. */
