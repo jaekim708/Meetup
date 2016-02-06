@@ -2,8 +2,13 @@ package com.example.tartanhacks.meetup;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.AccessToken;
@@ -13,12 +18,20 @@ import com.facebook.HttpMethod;
 import com.parse.ParseUser;
 
 import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 
 public class ProfileActivity extends Activity {
     private String email;
     private String name;
     private TextView displayNameView;
     private TextView bioView;
+    private ImageView profilePictureView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +41,7 @@ public class ProfileActivity extends Activity {
 
         displayNameView = (TextView) findViewById(R.id.display_name);
         bioView = (TextView) findViewById(R.id.bio);
+        profilePictureView = (ImageView) findViewById(R.id.profile_picture);
 
         getUserDetailsFromFB();
     }
@@ -51,7 +65,7 @@ public class ProfileActivity extends Activity {
     private void getUserDetailsFromFB() {
 
         Bundle parameters = new Bundle();
-        parameters.putString("fields", "email,name,first_name,picture");
+        parameters.putString("fields", "email,name,first_name,picture.type(large)");
         new GraphRequest(AccessToken.getCurrentAccessToken(), "/me", parameters, HttpMethod.GET,
                 new GraphRequest.Callback() {
                     public void onCompleted(GraphResponse response) {
@@ -60,13 +74,11 @@ public class ProfileActivity extends Activity {
                             name = response.getJSONObject().getString("name");
                             displayNameView.setText(response.getJSONObject().getString("first_name"));
 
-                            //mEmailID.setText(email);
-                            //mUsername.setText(name);
-                            //JSONObject picture = response.getJSONObject().getJSONObject("picture");
-                            // JSONObject data = picture.getJSONObject("data");
+                            JSONObject picture = response.getJSONObject().getJSONObject("picture");
+                            JSONObject data = picture.getJSONObject("data");
                             //  Returns a 50x50 profile picture
-                            // String pictureUrl = data.getString("url");
-                            // new ProfilePhotoAsync(pictureUrl).execute();
+                            String pictureUrl = data.getString("url");
+                            new ProfilePhotoAsync(pictureUrl).execute();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -74,6 +86,44 @@ public class ProfileActivity extends Activity {
                     }
                 }
         ).executeAsync();
+    }
+
+    class ProfilePhotoAsync extends AsyncTask<String, String, String> {
+        public Bitmap bitmap;
+        String url;
+        public ProfilePhotoAsync(String url) {
+            this.url = url;
+        }
+        @Override
+        protected String doInBackground(String... params) {
+            // Fetching data from URI and storing in bitmap
+            bitmap = DownloadImageBitmap(url);
+            return null;
+        }
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            profilePictureView.setImageBitmap(bitmap);
+        }
+
+    }
+
+    public static Bitmap DownloadImageBitmap(String url) {
+        Bitmap bm = null;
+        try {
+            URL aURL = new URL(url);
+            URLConnection conn = aURL.openConnection();
+            conn.connect();
+            InputStream is = conn.getInputStream();
+            BufferedInputStream bis = new BufferedInputStream(is);
+            bm = BitmapFactory.decodeStream(bis);
+            bis.close();
+            is.close();
+            Log.d("IMG", "Image successfully downloaded: " + bm.getByteCount());
+        } catch (IOException e) {
+            Log.e("IMAGE", "Error getting bitmap", e);
+        }
+        return bm;
     }
 
 }
