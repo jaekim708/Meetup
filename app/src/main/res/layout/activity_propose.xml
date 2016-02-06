@@ -21,19 +21,28 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <EditText android:id="@+id/edit_message"
+    <EditText android:id="@+id/activity_name"
+        android:inputType="textShortMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:background="@android:drawable/edit_text"
         android:hint="Enter activity name" />
 
+    <EditText android:id="@+id/number_people"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="260dp"
+        android:background="@android:drawable/edit_text"
+        android:hint="How many people?" />
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="500dp"
         android:text="Let's chill!"
-        android:onClick="proposeActivity" />
+        android:onClick="sendParseData" />
 
     <Spinner
         android:id="@+id/spinner1"
