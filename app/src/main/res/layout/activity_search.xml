@@ -21,11 +21,13 @@
         android:background="#3353a3"/>
     <TextView
         android:id="@+id/search_query"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="132dp"
         android:textSize="18sp"
-        android:text="What kind of activities?"/>
+        android:text="What kind of activities?"
+        android:gravity="center"
+        android:background="#f4f7ff"/>
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dip"
