@@ -21,7 +21,11 @@
         <activity
             android:name=".ProposeActivity"
             android:label="@string/title_activity_propose"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.tartanhacks.meetup.MainActivity" />
         </activity>
     </application>
 
