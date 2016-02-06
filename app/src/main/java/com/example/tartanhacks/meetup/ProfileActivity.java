@@ -65,7 +65,7 @@ public class ProfileActivity extends Activity {
     private void getUserDetailsFromFB() {
 
         Bundle parameters = new Bundle();
-        parameters.putString("fields", "email,name,first_name,picture.type(large)");
+        parameters.putString("fields", "email,name,first_name,picture.height(350).width(350)");
         new GraphRequest(AccessToken.getCurrentAccessToken(), "/me", parameters, HttpMethod.GET,
                 new GraphRequest.Callback() {
                     public void onCompleted(GraphResponse response) {
