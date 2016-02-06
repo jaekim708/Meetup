@@ -29,11 +29,17 @@
         android:textColor="#000000"
         />
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="240dp"
+        android:src="@drawable/profileinfosmall"/>
+
     <EditText
         android:id="@+id/bio"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="290dp"
         android:hint="@string/bio_hint"
         android:inputType="textMultiLine"
         android:lines="7"
