@@ -24,4 +24,8 @@ public class HomeActivity extends Activity {
         ParseUser user = ParseUser.getCurrentUser();
         user.logOut();
     }
+    public void searchActivity(View view) {
+        Intent intent = new Intent(this, SearchActivity.class);
+        startActivity(intent);
+    }
 }

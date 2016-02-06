@@ -14,10 +14,17 @@
         android:onClick="proposeActivity" />
 
     <Button
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="100dp"
+        android:text="Search for activity"
+        android:onClick="searchActivity" />
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="420dp"
-        android:layout_marginLeft="290dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginLeft="280dp"
         android:text="Logout"
         android:onClick="logout" />
 
