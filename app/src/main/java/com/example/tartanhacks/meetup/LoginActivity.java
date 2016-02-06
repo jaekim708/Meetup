@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                     profileActivity();
                 } else {
                     Log.d("MyApp", "User logged in through Facebook!");
-                    homeActivity();
+                    profileActivity();
                 }
             }
         });

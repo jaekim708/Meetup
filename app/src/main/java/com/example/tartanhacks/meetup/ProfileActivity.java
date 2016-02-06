@@ -6,9 +6,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.AccessToken;
@@ -29,19 +30,19 @@ import java.net.URLConnection;
 public class ProfileActivity extends Activity {
     private String email;
     private String name;
-    private TextView displayNameView;
+    private String displayName;
+    private TextView nameView;
     private TextView bioView;
-    private ImageView profilePictureView;
+    private CircularImageView profilePictureView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        //getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        displayNameView = (TextView) findViewById(R.id.display_name);
+        nameView = (TextView) findViewById(R.id.name);
         bioView = (TextView) findViewById(R.id.bio);
-        profilePictureView = (ImageView) findViewById(R.id.profile_picture);
+        profilePictureView = (CircularImageView) findViewById(R.id.profile_picture);
 
         getUserDetailsFromFB();
     }
@@ -56,7 +57,7 @@ public class ProfileActivity extends Activity {
         ParseUser user = ParseUser.getCurrentUser();
         user.setEmail(email);
         user.put("name", name);
-        user.put("displayName", displayNameView.getText().toString());
+        user.put("displayName", displayName);
         user.put("bio", bioView.getText().toString());
 
         user.saveInBackground();
@@ -65,14 +66,15 @@ public class ProfileActivity extends Activity {
     private void getUserDetailsFromFB() {
 
         Bundle parameters = new Bundle();
-        parameters.putString("fields", "email,name,first_name,picture.height(350).width(350)");
+        parameters.putString("fields", "email,name,first_name,picture.width(300).height(300)");
         new GraphRequest(AccessToken.getCurrentAccessToken(), "/me", parameters, HttpMethod.GET,
                 new GraphRequest.Callback() {
                     public void onCompleted(GraphResponse response) {
                         try {
                             email = response.getJSONObject().getString("email");
                             name = response.getJSONObject().getString("name");
-                            displayNameView.setText(response.getJSONObject().getString("first_name"));
+                            displayName = response.getJSONObject().getString("first_name");
+                            nameView.setText(name);
 
                             JSONObject picture = response.getJSONObject().getJSONObject("picture");
                             JSONObject data = picture.getJSONObject("data");
