@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
 
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
-            goToHome();
+            homeActivity();
         }
     }
 
@@ -45,26 +45,26 @@ public class LoginActivity extends AppCompatActivity {
                 if (user == null) {
                     Log.d("MyApp", "Uh oh. The user cancelled the Facebook login.");
                 } else if (user.isNew()) {
-                    goToProfile();
                     Log.d("MyApp", "User signed up and logged in through Facebook!");
+                    profileActivity();
                 } else {
-                    goToHome();
                     Log.d("MyApp", "User logged in through Facebook!");
+                    homeActivity();
                 }
             }
         });
     }
 
     public void go(View view) {
-        goToHome();
+        homeActivity();
     }
 
-    private void goToHome() {
+    private void homeActivity() {
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }
 
-    private void goToProfile() {
+    private void profileActivity() {
         Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
     }
