@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 
 public class SearchActivity extends AppCompatActivity {
     Intent intent = getIntent();
@@ -84,5 +85,12 @@ public class SearchActivity extends AppCompatActivity {
                 */
                 break;
         }
+    }
+    public void submitSearch(View v) {
+        //EditText getSearch = (EditText) findViewById(R.id.search_query);
+        //String searchQuery = getSearch.getText().toString();
+
+        Intent intent = new Intent(this, SwipeActivity.class);
+        startActivity(intent);
     }
 }
