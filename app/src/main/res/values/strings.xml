@@ -12,6 +12,7 @@
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="title_activity_propose">Propose Activity</string>
     <string name="title_activity_swipe">Swipe Activity</string>
+    <string name="title_activity_search">What to do...?</string>
     <string-array name="categories_array">
         <item>@string/outdoor</item>
         <item>@string/movies</item>
