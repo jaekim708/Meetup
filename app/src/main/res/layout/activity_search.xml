@@ -13,10 +13,22 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="500dp"
         android:text="Submit"/>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:layout_marginTop="130dp"
+        android:background="#d1d7e6"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:textSize="18sp"
+        android:text="What kind of activities do you want?"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="75dp"
+        android:background="@android:drawable/edit_text"
         android:hint="Search"/>
     <CheckBox android:id="@+id/checkbox_outdoor"
         android:layout_marginTop="170dp"
