@@ -68,17 +68,16 @@ public class SwipeActivity extends Activity {
                                     ContextCompat.getDrawable(getApplicationContext(), R.drawable.picture1));
                             if (a.getCategory().equals("Nature"))
                                 card = new CardModel(a.getName(), "",
-                                        ContextCompat.getDrawable(getApplicationContext(), R.drawable.nature));
+                                        ContextCompat.getDrawable(getApplicationContext(), R.drawable.hike2));
                             else if (a.getCategory().equals("Chill"))
                                 card = new CardModel(a.getName(), "",
-                                        ContextCompat.getDrawable(getApplicationContext(), R.drawable.coffee));
+                                        ContextCompat.getDrawable(getApplicationContext(), R.drawable.coffee2));
                             else if (a.getCategory().equals("Cultural"))
                                 card = new CardModel(a.getName(), "",
                                         ContextCompat.getDrawable(getApplicationContext(), R.drawable.cultural));
                             else if (a.getCategory().equals("Sports"))
                                 card = new CardModel(a.getName(), "",
                                         ContextCompat.getDrawable(getApplicationContext(), R.drawable.sport));
-                            //else if (a.getCategory() == "Culture")
 
                             card.setOnClickListener(new CardModel.OnClickListener() {
                                 @Override

@@ -25,6 +25,8 @@
         android:layout_height="wrap_content"
         android:text="Refresh"
         android:layout_gravity="top|right"
-        android:onClick="refresh" />
+        android:onClick="refresh"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true" />
 
 </RelativeLayout>
