@@ -24,6 +24,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+            goToHome();
+        }
     }
 
     @Override
@@ -40,8 +45,10 @@ public class LoginActivity extends AppCompatActivity {
                 if (user == null) {
                     Log.d("MyApp", "Uh oh. The user cancelled the Facebook login.");
                 } else if (user.isNew()) {
+                    goToProfile();
                     Log.d("MyApp", "User signed up and logged in through Facebook!");
                 } else {
+                    goToHome();
                     Log.d("MyApp", "User logged in through Facebook!");
                 }
             }
@@ -49,7 +56,16 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void go(View view) {
+        goToHome();
+    }
+
+    private void goToHome() {
         Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+    }
+
+    private void goToProfile() {
+        Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
     }
 

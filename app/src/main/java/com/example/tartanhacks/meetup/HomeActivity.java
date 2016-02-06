@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
 
+import com.parse.ParseUser;
+
 public class HomeActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,9 +20,9 @@ public class HomeActivity extends Activity {
         Intent intent = new Intent(this, ProposeActivity.class);
         startActivity(intent);
     }
-    public void facebookActivity(View view)  {
-        Intent intent = new Intent(this, ProposeActivity.class);
-        startActivity(intent);
+    public void logout(View view)  {
+        ParseUser user = ParseUser.getCurrentUser();
+        user.logOut();
     }
     public void searchActivity(View view) {
         Intent intent = new Intent(this, SearchActivity.class);
