@@ -7,13 +7,13 @@
     android:fitsSystemWindows="true"
     tools:context=".LoginActivity">
 
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/login_button"
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp" />
+        android:layout_marginTop="320dp"
+        android:layout_marginLeft="200dp"
+        android:text="Login"
+        android:onClick="login" />
 
     <include layout="@layout/content_facebook" />
 
