@@ -10,8 +10,7 @@ import com.parse.ParseQuery;
 
 import java.util.List;
 
-
-public class MainActivity extends Activity {
+public class SwipeActivity extends Activity {
     ParseQuery<ParseObject> activities_query = ParseQuery.getQuery("Activities");
     ParseObject activities;
 
@@ -19,6 +18,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         activities_query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, ParseException e) {
                 if (e == null) {
