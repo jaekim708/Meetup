@@ -7,25 +7,67 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Propose"
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/create_activity"
+        android:paddingTop="70dp"
+        android:paddingBottom="70dp"
+        android:paddingRight="10dp"
+        android:scaleType="fitCenter"
+        android:background="?attr/colorPrimary"
         android:onClick="proposeActivity" />
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="100dp"
-        android:text="Search for activity"
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:src="@mipmap/options"
+            android:scaleType="fitCenter"
+            android:layout_marginTop="10dp"
+            android:paddingRight="100dp"
+            android:onClick="logout"
+            android:background="?attr/colorPrimary"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Propose an Event"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:paddingTop="120dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:clickable="false"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/search_event"
+        android:paddingTop="70dp"
+        android:paddingBottom="70dp"
+        android:scaleType="fitCenter"
+        android:background="#FFFFFF"
         android:onClick="searchActivity" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="220dp"
-        android:layout_marginLeft="280dp"
-        android:text="Logout"
-        android:onClick="logout" />
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search for Activity"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:paddingTop="120dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:clickable="false"/>
+    </FrameLayout>
 </LinearLayout>
