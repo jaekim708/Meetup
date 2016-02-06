@@ -34,7 +34,6 @@ public class ProposeActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
-        String activityType = spinner.getSelectedItem().toString();
     }
 
     public void sendParseData(View v)   {
