@@ -18,16 +18,22 @@ import com.parse.ParseUser;
 import java.util.List;
 
 public class SwipeActivity extends Activity {
-    ParseQuery<UserActivity> activities_query = ParseQuery.getQuery(UserActivity.class);
-    CardContainer mCardCont = (CardContainer) findViewById(R.id.cardCont);
-    SimpleCardStackAdapter adapter = new SimpleCardStackAdapter(this);
-    boolean userDislikes = false;
+    ParseQuery<UserActivity> activities_query;
+    CardContainer mCardCont;
+    SimpleCardStackAdapter adapter;
+    boolean userDislikes;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_swipe);
+
+        activities_query = ParseQuery.getQuery(UserActivity.class);
+        mCardCont = (CardContainer) findViewById(R.id.cardCont);
+        adapter = new SimpleCardStackAdapter(this);
+        userDislikes = false;
+
         activities_query.findInBackground(new FindCallback<UserActivity>() {
             public void done(List<UserActivity> uActivities, ParseException e) {
                 if (e == null) {
