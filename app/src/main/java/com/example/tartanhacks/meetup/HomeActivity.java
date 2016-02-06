@@ -22,4 +22,8 @@ public class HomeActivity extends Activity {
         Intent intent = new Intent(this, ProposeActivity.class);
         startActivity(intent);
     }
+    public void searchActivity(View view) {
+        Intent intent = new Intent(this, SearchActivity.class);
+        startActivity(intent);
+    }
 }
