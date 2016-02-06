@@ -48,4 +48,9 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    public void go(View view) {
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+    }
+
 }
