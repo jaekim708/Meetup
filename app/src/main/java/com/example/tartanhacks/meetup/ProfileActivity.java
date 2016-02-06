@@ -27,7 +27,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class ProfileActivity extends Activity {
+public class ProfileActivity extends AppCompatActivity {
     private String email;
     private String name;
     private String displayName;
