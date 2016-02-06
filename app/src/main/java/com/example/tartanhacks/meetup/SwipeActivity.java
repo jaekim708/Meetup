@@ -37,9 +37,8 @@ public class SwipeActivity extends Activity {
         activities_query.findInBackground(new FindCallback<UserActivity>() {
             public void done(List<UserActivity> uActivities, ParseException e) {
                 if (e == null) {
-                    for (UserActivity a : uActivities) {
+                    for (final UserActivity a : uActivities) {
                         String activityName = a.getName();
-
 
                         ParseRelation relation = a.getRelation("usersDisliked");
                         ParseQuery dislikeQuery = relation.getQuery();
@@ -62,7 +61,6 @@ public class SwipeActivity extends Activity {
                         if (userDislikes)
                             continue;
 
-
                         System.out.println("%d" + a.getNumOfPeople());
                         CardModel card = new CardModel(activityName,
                                 "Description goes here",
@@ -71,19 +69,27 @@ public class SwipeActivity extends Activity {
                         card.setOnClickListener(new CardModel.OnClickListener() {
                             @Override
                             public void OnClickListener() {
-                                System.out.println("Swipeable Cards" + "I am pressing the card");
+                                System.out.println("Swipeable Cards" + " DISPLAY MORE INFO");
                             }
                         });
 
                         card.setOnCardDimissedListener(new CardModel.OnCardDimissedListener() {
                             @Override
-                            public void onLike() {
-                                System.out.println("Swipeable Cards" + "I like the card");
+                            public void onLike() { // swiping LEFT
+                                userDislikes = true;
+                                System.out.println("Swipeable Cards" + " I dislike the card");
+                                a.setName("I DON'T LIKE IT");
+                                a.saveInBackground();
+                                //a.addUsersDisliked(ParseUser.getCurrentUser());
                             }
 
                             @Override
-                            public void onDislike() {
-                                System.out.println("Swipeable Cards" + "I dislike the card");
+                            public void onDislike() { // swiping RIGHT
+                                userDislikes = false;
+                                System.out.println("Swipeable Cards" + "I like the card");
+                                a.setName("I LIKE IT");
+                                a.saveInBackground();
+                                //a.addUsersLiked(ParseUser.getCurrentUser());
                             }
                         });
                         adapter.add(card);

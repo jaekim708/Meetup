@@ -19,7 +19,7 @@ public class HomeActivity extends Activity {
         startActivity(intent);
     }
     public void facebookActivity(View view)  {
-        Intent intent = new Intent(this, FacebookActivity.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 }

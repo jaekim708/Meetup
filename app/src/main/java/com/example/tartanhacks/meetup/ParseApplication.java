@@ -3,6 +3,7 @@ package com.example.tartanhacks.meetup;
 import android.app.Application;
 
 import com.parse.Parse;
+import com.parse.ParseFacebookUtils;
 import com.parse.ParseObject;
 
 /**
@@ -15,6 +16,7 @@ public class ParseApplication extends Application {
         ParseObject.registerSubclass(UserActivity.class);
         Parse.initialize(this, this.getString(R.string.parse_app_id),
                 this.getString(R.string.parse_client_key));
+        ParseFacebookUtils.initialize(getApplicationContext());
     }
 
 }
