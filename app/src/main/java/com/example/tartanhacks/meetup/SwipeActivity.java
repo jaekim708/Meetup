@@ -19,13 +19,14 @@ import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class SwipeActivity extends Activity {
     ParseQuery<UserActivity> activities_query = ParseQuery.getQuery(UserActivity.class);
-    CardContainer mCardCont;
-    SimpleCardStackAdapter adapter;
+    static CardContainer mCardCont;
+    static SimpleCardStackAdapter adapter;
     boolean userSeen;
-    ArrayList<String> currCards;
+    static Stack<String> currCards;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,9 @@ public class SwipeActivity extends Activity {
         setContentView(R.layout.activity_swipe);
         mCardCont = (CardContainer) findViewById(R.id.cardCont);
         adapter = new SimpleCardStackAdapter(this);
-        currCards = new ArrayList<>();
+        currCards = new Stack<>();
+        findViewById(R.id.cardCont).setVisibility(View.VISIBLE);
+        findViewById(R.id.noMoreCards).setVisibility(View.GONE);
         showCards();
     }
 
@@ -49,26 +52,47 @@ public class SwipeActivity extends Activity {
                         userSeen = false;
                         try {
                             int n = seenQuery.find().size();
-                            if (seenQuery.find().size() > 0) {
-                                System.out.println("userSeen is true " + n);
+                            if (n > 0) {
+                                System.out.println("userSeen is true " + n + " " + a.getObjectId());
                                 userSeen = true;
                             }
                         } catch (ParseException E) {
                         }
-                        if (!userSeen)
-                            adapter.add(newCard(a));
-                        mCardCont.setAdapter(adapter);
-                        a.saveInBackground();
+                        if (!userSeen) {
+                            a.addUsersSeen(ParseUser.getCurrentUser());
+                            a.saveInBackground();
+                            currCards.push(a.getObjectId());
+                            CardModel card = new CardModel(a.getName(), "Description goes here",
+                                    ContextCompat.getDrawable(getApplicationContext(), R.drawable.picture1));
+                            card.setOnClickListener(new CardModel.OnClickListener() {
+                                @Override
+                                public void OnClickListener() {
+                                    System.out.println("Swipeable Cards" + " DISPLAY MORE INFO");
+                                }
+                            });
+                            card.setOnCardDimissedListener(new newCardDismissedListener(a));
+                            adapter.add(card);
+                        }
                     }
+                    mCardCont.setAdapter(adapter);
                 }
             }
+
         });
     }
 
     public void showCards() {
         updateCards();
-        //need refresh button
         mCardCont.setAdapter(adapter);
+    }
+
+    public void refresh(View view){
+        updateCards();
+        System.out.println(currCards.size());
+        for (int i = 0; i < currCards.size(); i++) {
+            System.out.println(currCards.get(i));
+
+        }
         if (currCards.size() == 0) {
             findViewById(R.id.cardCont).setVisibility(View.GONE);
             findViewById(R.id.noMoreCards).setVisibility(View.VISIBLE);
@@ -76,43 +100,14 @@ public class SwipeActivity extends Activity {
             findViewById(R.id.cardCont).setVisibility(View.VISIBLE);
             findViewById(R.id.noMoreCards).setVisibility(View.GONE);
         }
-
     }
 
-    public CardModel newCard(final UserActivity a){
-        String activityName = a.getName();
-        final String activityID = a.getObjectId();
-        currCards.add(activityID);
-        CardModel card = new CardModel(activityName, "Description goes here",
-                ContextCompat.getDrawable(getApplicationContext(), R.drawable.picture1));
-        card.setOnClickListener(new CardModel.OnClickListener() {
-            @Override
-            public void OnClickListener() {
-                System.out.println("Swipeable Cards" + " DISPLAY MORE INFO");
-            }
-        });
-
-        card.setOnCardDimissedListener(new CardModel.OnCardDimissedListener() {
-            @Override
-            public void onLike() { // onDISLIKE, swiping LEFT
-                a.addUsersSeen(ParseUser.getCurrentUser());
-                a.saveInBackground();
-                currCards.remove(activityID);
-                adapter.pop();
-                updateCards();
-            }
-
-            @Override
-            public void onDislike() { // onLIKE, swiping RIGHT
-                ParseUser u = ParseUser.getCurrentUser();
-                a.addUsersSeen(u);
-                a.saveInBackground();
-                u.getRelation("likedActivities").add(a);
-                currCards.remove(activityID);
-                adapter.pop();
-                updateCards();
-            }
-        });
-        return card;
+    public static void removeCurrCard(){
+        String id = currCards.pop();
+        System.out.println(id);
+        adapter.pop();
+        mCardCont.setAdapter(adapter);
     }
+
 }
+
