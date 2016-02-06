@@ -40,7 +40,6 @@ public class SwipeActivity extends Activity {
                     for (UserActivity a : uActivities) {
                         String activityName = a.getName();
 
-
                         ParseRelation relation = a.getRelation("usersDisliked");
                         ParseQuery dislikeQuery = relation.getQuery();
                         dislikeQuery.whereEqualTo("getUsersDisliked", ParseUser.getCurrentUser());
@@ -71,22 +70,29 @@ public class SwipeActivity extends Activity {
                         card.setOnClickListener(new CardModel.OnClickListener() {
                             @Override
                             public void OnClickListener() {
-                                System.out.println("Swipeable Cards" + "I am pressing the card");
+                                System.out.println("Swipeable Cards" + " DISPLAY MORE INFO");
                             }
                         });
 
                         card.setOnCardDimissedListener(new CardModel.OnCardDimissedListener() {
                             @Override
                             public void onLike() {
-                                System.out.println("Swipeable Cards" + "I like the card");
+                                userDislikes = false;
+                                System.out.println("Swipeable Cards" + " I like the card");
                             }
 
                             @Override
                             public void onDislike() {
+                                userDislikes = true;
                                 System.out.println("Swipeable Cards" + "I dislike the card");
                             }
                         });
+                        if (userDislikes)
+                            a.addUsersDisliked(ParseUser.getCurrentUser());
+                        else
+                            a.addUsersLiked(ParseUser.getCurrentUser());
                         adapter.add(card);
+                        a.saveInBackground();
                     }
                     mCardCont.setAdapter(adapter);
                 } else {
