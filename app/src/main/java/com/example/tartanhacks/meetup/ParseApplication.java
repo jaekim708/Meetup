@@ -13,6 +13,7 @@ public class ParseApplication extends Application {
 
     @Override
     public void onCreate() {
+        super.onCreate();
         ParseObject.registerSubclass(UserActivity.class);
         Parse.initialize(this, this.getString(R.string.parse_app_id),
                 this.getString(R.string.parse_client_key));
